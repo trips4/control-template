@@ -8,8 +8,8 @@
 #  The password for the user (Sensitive).
 #
 class profile::base (
-  String $username            = 'test_user',
-  Sensitive[String] $password = "MyPassword123!",
+  String $username = 'test_user',
+  String $password = 'MyPassword123!',
 ) {
   case $facts['kernel'] {
     'Linux': {
