@@ -1,2 +1,4 @@
 ---
-message: "This node is using common data"
+lookup_options:
+  profile::base::password:
+   convert_to: "Sensitive"
