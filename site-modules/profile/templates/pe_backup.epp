@@ -1,0 +1,67 @@
+#!/bin/bash
+set -euo pipefail
+
+SERVICES=(
+  "pe_databases-catalogs.timer"
+  "pe_databases-facts.timer"
+  "pe_databases-other.timer"
+)
+COMMAND="/opt/puppetlabs/bin/puppet-backup create"
+BACKUP_DIR="/var/puppetlabs/backups"
+ORCH_SECRETS="/etc/puppetlabs/orchestration-services/conf.d/secrets"
+CONSOLE_SECRETS="/etc/puppetlabs/console-services/conf.d/secrets"
+
+# Add timestamp to backup filenames
+TIMESTAMP="$(date -u +%Y-%m-%d_%H.%M.%S_UTC)"
+ORCH_BACKUP_FILE="$BACKUP_DIR/orchestration-services-backup-${TIMESTAMP}.tgz"
+CONSOLE_BACKUP_FILE="$BACKUP_DIR/console-services-backup-${TIMESTAMP}.tgz"
+
+# Ensure pg_repack does not happen during backup
+
+echo "Stopping services..."
+for svc in "${SERVICES[@]}"; do
+  echo "Stopping $svc..."
+  if ! sudo systemctl stop "$svc"; then
+    echo "[ERROR] Failed to stop $svc" >&2
+    exit 1
+  fi
+done
+
+# Function to restart all services
+restart_services() {
+  echo "Restarting services..."
+  for svc in "${SERVICES[@]}"; do
+    echo "Restarting $svc..."
+    if sudo systemctl start "$svc"; then
+      echo "$svc restarted successfully."
+    else
+      echo "[ERROR] Failed to restart $svc" >&2
+      exit 1
+    fi
+  done
+}
+
+# Ensure all services are restarted regardless of command success/failure
+trap restart_services EXIT
+
+echo "Running command: $COMMAND"
+
+if ! $COMMAND; then
+  echo "[ERROR] Backup command failed: $COMMAND" >&2
+  exit 1
+fi
+
+
+
+echo "Backing up console-services secrets..."
+echo "Backing up orchestration-services secrets..."
+if ! tar -cvzf "$ORCH_BACKUP_FILE" -C "$(dirname "$ORCH_SECRETS")" "$(basename "$ORCH_SECRETS")"; then
+  echo "[ERROR] Failed to backup orchestration-services secrets." >&2
+  exit 1
+fi
+
+echo "Backing up console-services secrets..."
+if ! tar -cvzf "$CONSOLE_BACKUP_FILE" -C "$(dirname "$CONSOLE_SECRETS")" "$(basename "$CONSOLE_SECRETS")"; then
+  echo "[ERROR] Failed to backup console-services secrets." >&2
+  exit 1
+fi
