@@ -9,7 +9,7 @@
 #
 class profile::base (
   Sensitive[String] $password,
-  String $username = 'test_user',
+  String $username = 'trips4',
 ) {
   case $facts['kernel'] {
     'Linux': {
