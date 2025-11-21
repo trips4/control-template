@@ -35,7 +35,8 @@ node default {
       $classes.unique.include
     }
     default: {
-      fail('This node did not receive any classification')
+      notify { 'No classes found in hiera data': }
+      #fail('This node did not receive any classification')
     }
   }
 }
