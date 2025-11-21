@@ -1,0 +1,6 @@
+profile::param_lookup::param_lookup_1: 'Parameter Lookup Value 1 from node(s).yaml'
+profile::param_lookup::param_lookup_2: 'Parameter Lookup Value 2 from node(s).yaml'
+classes:
+  - profile::base
+  - profile::apt_myorg
+profile::apt_myorg::update_frequency: 'weekly' 

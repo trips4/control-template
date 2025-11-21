@@ -17,3 +17,4 @@ forge 'https://forge.puppet.com'
 #  branch: 'docs_experiment'
 
 mod 'puppetlabs-stdlib', '9.7.0'
+mod 'puppetlabs-apt',    '11.1.0'
