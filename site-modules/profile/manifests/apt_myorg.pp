@@ -9,6 +9,4 @@ class profile::apt_myorg (
       frequency => $update_frequency,
     },
   }
-  notify { "Apt update frequency set to ${update_frequency}":
-  }
 }
