@@ -1,7 +1,7 @@
 ---
 profile::param_lookup::param_lookup_1: 'Parameter Lookup Value 1 from common.yaml'
 profile::param_lookup::param_lookup_2: 'Parameter Lookup Value 2 from common.yaml'
-#classes:
+classes:
   #- profile::base
 
 lookup_options:
