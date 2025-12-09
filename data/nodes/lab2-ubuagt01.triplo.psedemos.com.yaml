@@ -4,4 +4,5 @@ classes:
   - profile::base
   - profile::apt_myorg
   - profile::stig::v_260469
+  - profile::stig::v_260470
 profile::apt_myorg::update_frequency: 'weekly' 
