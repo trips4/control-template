@@ -7,3 +7,5 @@ classes:
 lookup_options:
   profile::base::password:
    convert_to: "Sensitive"
+  profile::stig::v_260470::grub_pbkdf2_hash:
+   convert_to: "Sensitive"
