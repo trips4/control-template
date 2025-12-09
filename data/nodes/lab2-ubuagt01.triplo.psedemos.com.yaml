@@ -3,4 +3,5 @@ profile::param_lookup::param_lookup_2: 'Parameter Lookup Value 2 from node(s).ya
 classes:
   - profile::base
   - profile::apt_myorg
+  - profile::stig::v_260469
 profile::apt_myorg::update_frequency: 'weekly' 
