@@ -2,13 +2,13 @@
 class profile::stig::v_260469 {
   exec { 'disable_ctrl_alt_del':
     command => '/bin/systemctl disable ctrl-alt-del.target',
-    #unless  => '/bin/systemctl is-enabled ctrl-alt-del.target | grep -q masked',
+    unless  => '/bin/systemctl is-enabled ctrl-alt-del.target | grep -q masked',
     path    => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
   }
 
   exec { 'mask_ctrl_alt_del':
     command => '/bin/systemctl mask ctrl-alt-del.target',
-    #unless  => '/bin/systemctl status ctrl-alt-del.target | grep -q masked',
+    unless  => '/bin/systemctl status ctrl-alt-del.target | grep -q masked',
     path    => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
     require => Exec['disable_ctrl_alt_del'],
   }
