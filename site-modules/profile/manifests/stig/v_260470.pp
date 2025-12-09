@@ -10,18 +10,22 @@
 class profile::stig::v_260470 (
   String $grub_pbkdf2_hash,
 ) {
-  $custom_line = "set superusers=\"root\"\npassword_pbkdf2 root ${grub_pbkdf2_hash}"
-
-  file_line { 'set_grub_superuser_and_password':
+  file_line { 'set_grub_superuser':
     path  => '/etc/grub.d/40_custom',
-    line  => $custom_line,
-    match => '^set superusers=|^password_pbkdf2',
+    line  => 'set superusers="root"',
+    match => '^set superusers=',
+  }
+
+  file_line { 'set_grub_password_pbkdf2':
+    path  => '/etc/grub.d/40_custom',
+    line  => "password_pbkdf2 root ${grub_pbkdf2_hash}",
+    match => '^password_pbkdf2',
   }
 
   exec { 'update-grub':
     command     => '/usr/sbin/update-grub',
     refreshonly => true,
-    subscribe   => File_line['set_grub_superuser_and_password'],
+    subscribe   => [File_line['set_grub_superuser'], File_line['set_grub_password_pbkdf2']],
     path        => ['/usr/bin', '/usr/sbin', '/bin', '/sbin'],
   }
 }
