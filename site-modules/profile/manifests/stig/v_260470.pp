@@ -8,7 +8,7 @@
 #   }
 
 class profile::stig::v_260470 (
-  Sensitive[String] $grub_pbkdf2_hash,
+  String $grub_pbkdf2_hash,
 ) {
   $custom_line = "set superusers=\"root\"\npassword_pbkdf2 root ${grub_pbkdf2_hash}"
 
