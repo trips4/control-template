@@ -1,11 +1,10 @@
-# STIG V-260470: Require password for single-user and maintenance modes (Ubuntu 22.04)
-# This class ensures a grub password is set for root in /etc/grub.d/40_custom and grub is updated.
+# @summary
+#  STIG V-260470: Require password for single-user and maintenance modes (Ubuntu 22.04)
+#  This class ensures a grub password is set for root in /etc/grub.d/40_custom and grub is updated.
 #
-# To use, provide the grub_pbkdf2_hash parameter with the output from grub-mkpasswd-pbkdf2.
-# Example usage:
-#   class { 'profile::stig::v_260470':
-#     grub_pbkdf2_hash => 'grub.pbkdf2.sha512.10000.XXXX...'
-#   }
+# @param grub_pbkdf2_hash
+#  The PBKDF2 hash string for the grub root password.
+#
 
 class profile::stig::v_260470 (
   String $grub_pbkdf2_hash,
