@@ -5,6 +5,6 @@ profile::stig::v_260469::control_enable: false # Disable Ctrl-Alt-Delete reboot 
 classes:
   - profile::base
   - profile::apt_myorg
-  - role::stig::category_1
+  # - role::stig::category_1
   # - profile::stig::v_260469
   # - profile::stig::v_260470
