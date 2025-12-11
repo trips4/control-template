@@ -18,10 +18,7 @@ class profile::stig::ubuntu2204::v_260579 (
       content => @(END)
         # Minimal pam_pkcs11 configuration for STIG V-260579 compliance
         # This file must not be empty.
-        use_pkcs11_module = opensc;
-        pam_pkcs11 {
-          debug = false;
-        }
+        use_mappers=pwent;
         | END
     }
   } else {
