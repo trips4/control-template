@@ -18,7 +18,7 @@ class profile::stig::ubuntu2204::v_260579 (
       content => @(END)
         # Minimal pam_pkcs11 configuration for STIG V-260579 compliance
         # This file must not be empty.
-        use_mappers=pwent;
+        use_mappers=pwent
         | END
     }
   } else {

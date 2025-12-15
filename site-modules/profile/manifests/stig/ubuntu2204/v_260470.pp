@@ -6,7 +6,7 @@
 #  The PBKDF2 hash string for the grub root password.
 #
 
-class profile::stig::v_260470 (
+class profile::stig::ubuntu2204::v_260470 (
   String  $grub_pbkdf2_hash,
   Boolean $control_enable = true,
 ) {

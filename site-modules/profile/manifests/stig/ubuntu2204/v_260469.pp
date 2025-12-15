@@ -1,5 +1,5 @@
 # STIG V-260469: Disable Ctrl-Alt-Delete reboot sequence on Ubuntu 22.04
-class profile::stig::v_260469 (
+class profile::stig::ubuntu2204::v_260469 (
   Boolean $control_enable = true,
 ) {
   if $control_enable == true {
