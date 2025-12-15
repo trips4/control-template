@@ -7,6 +7,7 @@
 #
 
 class profile::stig::ubuntu2204::v_260470 (
+
   String  $grub_pbkdf2_hash,
   Boolean $control_enable = true,
 ) {
