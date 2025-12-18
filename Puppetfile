@@ -20,7 +20,7 @@ mod 'puppetlabs-stdlib', '9.7.0'
 mod 'puppetlabs-apt',    '11.1.0'
 
 # Added for SCM
-mod 'puppetlabs-comply', '3.5.0'
+mod 'puppetlabs-comply', '3.6.0'
 mod 'puppet-archive', '8.1.0'
 mod 'puppetlabs-chocolatey', '8.0.3'
 mod 'puppetlabs-pwshlib', '2.0.0'
