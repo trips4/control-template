@@ -6,5 +6,5 @@
 profile::base::password: 'ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEADuKketTyNbow8CN7IIOPad/jMhKorlllB532rE7dxES0Ofa+6HfdFZeznHzeIyx2Cq/O9h0/HI3c/5byN27jGioJie1BZTfFzEynB5itZ+ttqNTPUC1F6uhkYEPJSvVmqVto+P5oy6BPdsyvni1ZKoAzhXpcyDEI7uY9lpVxIV4AqxSOlW03lbay8bvA73lSCY1Z0ZG+8lCHR8ixxxZ3MfxXRQ8eUHS1/E6hdU24Uzg9ZtUCACkhWB4sYAKtSjIlfK0c01VaTab3jklUVNgudNCx+145vX0APdXoi/MNu4oMxy5u8rRRbvjuMqhdJSJZ0QoIZbLZL+gXPtZrtoyHTTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAnfMPhburqU1BsNz9KDDgZgBD2dcmyc3qhlOqHYAUbKZRq]'
 lookup_options:
   profile::base::password:
-   convert_to: "Sensitive"
+  convert_to: "Sensitive"
 comply::scanner_source: 'https://lab2-scm02.mytriplo.psedemos.com:30304/assessor'
