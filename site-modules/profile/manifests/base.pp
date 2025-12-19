@@ -20,18 +20,18 @@ class profile::base (
         managehome => true,
         groups     => ['sudo'],
       }
-      file_line { 'Enable PasswordAuthentication in SSH Dameon config':
-        ensure => present,
-        #path   => '/etc/ssh/sshd_config',
-        path   => '/etc/ssh/sshd_config.d/60-cloudimg-settings.conf',
-        line   => 'PasswordAuthentication yes',
-        match  => '^PasswordAuthentication',
-        notify => Service['sshd'],
-      }
-      service { 'sshd':
-        ensure => running,
-        enable => true,
-      }
+      # file_line { 'Enable PasswordAuthentication in SSH Dameon config':
+      #   ensure => present,
+      #   #path   => '/etc/ssh/sshd_config',
+      #   path   => '/etc/ssh/sshd_config.d/60-cloudimg-settings.conf',
+      #   line   => 'PasswordAuthentication yes',
+      #   match  => '^PasswordAuthentication',
+      #   notify => Service['sshd'],
+      # }
+      # service { 'sshd':
+      #   ensure => running,
+      #   enable => true,
+      # }
     }
     'windows': {
       # Additional Linux-specific configurations can be added here
