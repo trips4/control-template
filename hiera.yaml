@@ -3,23 +3,16 @@ version: 5
 
 defaults:               # Used for any hierarchy level that omits these keys.
   datadir: "data"       # This path is relative to hiera.yaml's directory.
-  #data_hash: yaml_data  # Use the built-in YAML backend.
-  lookup_key: eyaml_lookup_key
-  options:
-    pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
-    pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
-
 
 hierarchy:
-  - name: "Node Specific Data"
-    path: "nodes/%{trusted.certname}.yaml"
-
-  - name: "OS Specific Data"
-    path: "os/%{facts.os.family}.yaml"
-
-  - name: "Kernel Specific Data"
-    path: "kernel/%{facts.kernel}.eyaml"
-
-  - name: "Common Data"
-    path: "common.yaml"
+  - name: "Yaml Data"
+    lookup_key: eyaml_lookup_key
+    options:
+      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
+      pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
+    paths:
+      - "nodes/%{trusted.certname}.yaml"
+      - "os/%{facts.os.family}.yaml"
+      - "kernel/%{facts.kernel}.yaml"
+      - "common.yaml"
     
