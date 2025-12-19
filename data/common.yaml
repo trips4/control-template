@@ -7,3 +7,4 @@ profile::base::password: 'ENC[PKCS7,MIIB2gYJKoZIhvcNAQcDoIIByzCCAccCAQAxggEhMIIB
 lookup_options:
   profile::base::password:
    convert_to: "Sensitive"
+comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
