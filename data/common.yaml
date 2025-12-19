@@ -1,5 +1,9 @@
 ---
-profile::param_lookup::param_lookup_1: 'Parameter Lookup Value 1 from common.yaml'
-profile::param_lookup::param_lookup_2: 'Parameter Lookup Value 2 from common.yaml'
-classes:
-  - profile::base
+# We use this hiera data file to ensure all nodes have at least the base profile applied
+#classes:
+#  - profile::base
+
+profile::base::password: 'ENC[PKCS7,MIIB2gYJKoZIhvcNAQcDoIIByzCCAccCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAqYArROPjJJZ+D8xJzAGyrvjke0XuhhRZqKSYjgtA4eUBvctkPlTvVi/uLlCsSiJHm7f/yT1n8wvBtACbxpJdZTZc3ikyJrH0kfo+OUNOsfThMaK8fBReH6H3yhgl2leggvUZuEYuKhOCwADwvHV2W+o5Bc4OLKge/RfhPNEuGw1lEroNCwzhjqEpv6oodwFVMKa9ZfaL+h/5B7fg/fNmUYzdSAHEr6ogQaTETsXvarrx3iEtccXsBf4UsF/itBc13oybSjvLNdsCrA1lV8ZGlKny8+pJ/atX7EnZRedlYx+3h+zY0ubbO2t7Lb0qcTNKzIYJ8FAJlJPY0XRsZTaf0TCBnAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQ9qVpYELoHO+rG3xTp59aAYBwg6rm+16EU79zeoLv9QgQmUr6PzN2XA2P6pNyH6HMLUlrG4Wc6ZJi0F/UFYqdGVmTWQaEhwWADIS/IhpsHe+v7Vx8/ZTzXjkKXO0x87fmOIxjim+sGSSm5lKLV5xjNDirUVZ7sIE4WDmpGNN0L92zJA==]'
+lookup_options:
+  profile::base::password:
+   convert_to: "Sensitive"
