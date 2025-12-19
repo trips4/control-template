@@ -4,5 +4,5 @@ class profile::ssh_config {
       'X11Forwarding'          => 'no',
       'PasswordAuthentication' => 'yes',
     },
-  },
+  }
 }
