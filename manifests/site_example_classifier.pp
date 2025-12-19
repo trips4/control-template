@@ -25,4 +25,16 @@ File { backup => false }
 #
 # For more on node definitions, see: https://puppet.com/docs/puppet/latest/lang_node_definitions.html
 node default {
+  # Use Optional type and default to [] if not found
+  $classes = lookup('classes', Optional[Variant[String, Array[String]]], 'first', undef)
+
+  if $classes =~ String[1] {
+    include $classes
+  } elsif $classes =~ Array[String[1], 1] {
+    $classes.unique.include
+  } else {
+    notify { 'No classes found in hiera data': }
+    # Optionally fail here if you want to enforce classification
+    # fail('This node did not receive any classification')
+  }
 }
