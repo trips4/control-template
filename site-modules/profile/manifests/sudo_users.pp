@@ -18,4 +18,3 @@ class profile::sudo_users (
   # Create user resources
   create_resources('user', $users_with_group)
 }
-
