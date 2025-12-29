@@ -7,28 +7,13 @@
 # @param password
 #  The password for the user (Sensitive).
 #
-class profile::base (
-  Sensitive[String] $password,
-  String $username = 'trips4',
-) {
-  if $facts['os']['family'] == 'RedHat' {
-    $groups = ['wheel']
-  }
-  else {
-    $groups = ['sudo']
-  }
+class profile::base {
   case $facts['kernel'] {
     'Linux': {
-      user { $username:
-        ensure     => present,
-        password   => $password,
-        shell      => '/bin/bash',
-        managehome => true,
-        groups     => $groups,
-      }
+      include profile::base::linux
     }
     'windows': {
-      # Additional Windows-specific configurations can be added here
+      include profile::base::windows
     }
     default: {
       fail("Unsupported kernel ${facts['kernel']}")
