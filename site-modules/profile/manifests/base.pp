@@ -17,6 +17,8 @@ class profile::base (
   else {
     $groups = ['sudo']
   }
+  notify { "The group is ${groups}":
+  }
   case $facts['kernel'] {
     'Linux': {
       user { $username:
