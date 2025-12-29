@@ -1,4 +1,3 @@
-
 # class profile::sudo_users (
 #   Hash $users,
 # ) {
@@ -19,7 +18,6 @@
 #   create_resources('user', $users_with_group)
 # }
 
-
 class profile::sudo_users (
   Hash $users,
 ) {
@@ -34,14 +32,14 @@ class profile::sudo_users (
     $username   = $item[0]
     $attributes = $item[1]
 
-    # Wrap password in Sensitive if present
-    $updated_attributes = $attributes
-    if $attributes['password'] {
-      $updated_attributes = merge($attributes, { 'password' => Sensitive($attributes['password']) })
-    }
-
-    # Merge group info
-    $final_attributes = merge($updated_attributes, { 'groups' => [$admin_group] })
+    # If password exists, wrap it in Sensitive
+    $final_attributes = merge($attributes, {
+        'groups'   => [$admin_group],
+        'password' => $attributes['password'] ? {
+          undef   => undef,
+          default => Sensitive($attributes['password']),
+        }
+    })
 
     merge($memo, { $username => $final_attributes })
   }
