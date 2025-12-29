@@ -11,6 +11,12 @@ class profile::base (
   Sensitive[String] $password,
   String $username = 'trips4',
 ) {
+  if $facts['os.family'] == 'RedHat' {
+    $groups = ['wheel']
+  }
+  else {
+    $groups = ['sudo']
+  }
   case $facts['kernel'] {
     'Linux': {
       user { $username:
@@ -18,7 +24,7 @@ class profile::base (
         password   => $password,
         shell      => '/bin/bash',
         managehome => true,
-        groups     => ['sudo'],
+        groups     => $groups,
       }
     }
     'windows': {
