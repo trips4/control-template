@@ -8,11 +8,14 @@ class profile::sudo_users (
     default  => 'sudo',
   }
 
-  # Merge the admin group into each user definition
-  $users_with_group = $users.transform_values |$attributes| {
-    merge($attributes, { 'groups' => [$admin_group] })
+  # Build a new hash with the correct group added
+  $users_with_group = $users.reduce({}) |$memo, $item| {
+    $username   = $item[0]
+    $attributes = $item[1]
+    merge($memo, { $username => merge($attributes, { 'groups' => [$admin_group] }) })
   }
 
   # Create user resources
   create_resources('user', $users_with_group)
 }
+
