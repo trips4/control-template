@@ -38,3 +38,5 @@ mod 'puppetlabs-inifile', '6.2.0'
 # mod 'puppet-systemd', '6.6.0' #This could not be set to latest 7.x due to compatibility issues
 
 mod 'saz-ssh', '14.1.0'
+mod 'puppet-systemd', '6.6.0'
+mod 'puppetlabs-concat', '9.1.0'
