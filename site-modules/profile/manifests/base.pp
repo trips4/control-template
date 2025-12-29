@@ -11,14 +11,12 @@ class profile::base (
   Sensitive[String] $password,
   String $username = 'trips4',
 ) {
-  $osfamily = $facts['os.family']
-  if $facts['os.family'] == 'RedHat' {
+  if $facts['os']['family'] == 'RedHat' {
     $groups = ['wheel']
   }
   else {
     $groups = ['sudo']
   }
-  notify { "the os family is ${osfamily}": }
   case $facts['kernel'] {
     'Linux': {
       user { $username:
