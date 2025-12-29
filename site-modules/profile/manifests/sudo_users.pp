@@ -1,6 +1,6 @@
 
 class profile::sudo_users (
-  Sensitive Hash $users,
+  Sensitive[Hash] $users,
 ) {
   # Determine the appropriate admin group based on OS family
   $admin_group = $facts['os']['family'] ? {
