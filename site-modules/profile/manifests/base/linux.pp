@@ -3,5 +3,5 @@ class profile::base::linux {
     ensure => installed,
   }
   #include profile::sudo_users
-  include profile::ssh_config
+  #include profile::ssh_config
 }
