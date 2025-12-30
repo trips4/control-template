@@ -42,3 +42,4 @@ mod 'puppet-systemd', '6.6.0'
 mod 'puppetlabs-concat', '9.1.0'
 
 mod 'puppetlabs-dsc', '1.9.4'
+mod 'puppetlabs-windows_env', '5.0.2'
