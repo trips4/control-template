@@ -1,4 +1,5 @@
 class profile::base::windows {
+  include dsc
   include chocolatey
   package { '7zip':
     ensure   => installed,
