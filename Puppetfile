@@ -40,3 +40,5 @@ mod 'puppetlabs-inifile', '6.2.0'
 mod 'saz-ssh', '14.1.0'
 mod 'puppet-systemd', '6.6.0'
 mod 'puppetlabs-concat', '9.1.0'
+
+mod 'puppetlabs-dsc', '1.9.4'
