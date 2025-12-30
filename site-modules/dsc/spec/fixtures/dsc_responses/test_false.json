@@ -1,0 +1,24 @@
+{
+  "results": [
+    {
+      "name": "PSDesiredStateConfiguration/File",
+      "type": "Test",
+      "result": {
+        "desiredState": {
+          "DestinationPath": "/tmp/test.txt",
+          "Contents": "expected content",
+          "Ensure": "Present"
+        },
+        "actualState": {
+          "DestinationPath": "/tmp/test.txt",
+          "Contents": "actual content",
+          "Ensure": "Present"
+        },
+        "inDesiredState": false,
+        "differingProperties": ["Contents"]
+      }
+    }
+  ],
+  "messages": [],
+  "hadErrors": false
+}
