@@ -5,6 +5,12 @@ class profile::base::windows {
     ensure   => installed,
     provider => 'chocolatey',
   }
+
+  package { 'powershell-core':
+    ensure   => 'latest',
+    provider => 'chocolatey',
+  }
+
   dsc_resource { 'example_file':
     adapter    => 'Microsoft.Windows/WindowsPowerShell',
     type       => 'PSDesiredStateConfiguration/File',
