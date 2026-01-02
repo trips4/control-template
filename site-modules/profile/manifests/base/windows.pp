@@ -11,12 +11,12 @@ class profile::base::windows {
     provider => 'chocolatey',
   }
 
-  # dsc_resource { 'example_file':
-  #   adapter    => 'Microsoft.Windows/WindowsPowerShell',
-  #   type       => 'PSDesiredStateConfiguration/File',
-  #   properties => {
-  #     'DestinationPath' => 'C:/test.txt',
-  #     'Contents'        => 'Hello from Puppet!',
-  #   },
-  # }
+  dsc_resource { 'example_file':
+    adapter    => 'Microsoft.Windows/WindowsPowerShell',
+    type       => 'PSDesiredStateConfiguration/File',
+    properties => {
+      'DestinationPath' => 'C:/test.txt',
+      'Contents'        => 'Hello from Puppet!',
+    },
+  }
 }
