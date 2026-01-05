@@ -1,0 +1,61 @@
+<%- |
+  String[1] $module_name,
+  String[1] $version,
+  Enum['present', 'absent'] $ensure
+| -%>
+<#
+.SYNOPSIS
+  Check if a PowerShell module is in the desired state
+
+.DESCRIPTION
+  This script checks whether a PowerShell module is installed with the correct version.
+  Returns exit code 0 if the module is already in the desired state (idempotent check).
+  Returns exit code 1 if action is needed.
+
+.PARAMETER ModuleName
+  Name of the PowerShell module
+
+.PARAMETER Version
+  Exact version to check (semantic version format X.Y.Z)
+
+.PARAMETER Ensure
+  Desired state: 'present' or 'absent'
+#>
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$ModuleName = '<%= $module_name %>'
+$Version = '<%= $version %>'
+$Ensure = '<%= $ensure %>'
+
+try {
+    # Check if the module is installed with the specified version
+    $installedModule = Get-InstalledModule -Name $ModuleName -RequiredVersion $Version -ErrorAction SilentlyContinue
+
+    if ($Ensure -eq 'present') {
+        # For ensure => present: exit 0 if module is installed, exit 1 if not
+        if ($null -ne $installedModule) {
+            Write-Output "Module $ModuleName version $Version is already installed (idempotent)"
+            exit 0
+        } else {
+            Write-Output "Module $ModuleName version $Version is not installed (action needed)"
+            exit 1
+        }
+    } elseif ($Ensure -eq 'absent') {
+        # For ensure => absent: exit 0 if module is NOT installed, exit 1 if installed
+        if ($null -eq $installedModule) {
+            Write-Output "Module $ModuleName version $Version is already absent (idempotent)"
+            exit 0
+        } else {
+            Write-Output "Module $ModuleName version $Version is still installed (action needed)"
+            exit 1
+        }
+    }
+} catch {
+    # On error, assume action is needed
+    Write-Warning "Error checking module state: $_"
+    exit 1
+}

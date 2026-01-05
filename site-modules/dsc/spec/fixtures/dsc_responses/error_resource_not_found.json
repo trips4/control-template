@@ -1,0 +1,14 @@
+{
+  "error": {
+    "code": "ResourceNotFound",
+    "message": "The DSC resource 'Invalid/Resource' could not be found"
+  },
+  "results": [],
+  "messages": [
+    {
+      "level": "Error",
+      "message": "The DSC resource 'Invalid/Resource' could not be found"
+    }
+  ],
+  "hadErrors": true
+}

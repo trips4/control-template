@@ -1,0 +1,7 @@
+resources:
+  - name: PSDesiredStateConfiguration/File
+    type: PSDesiredStateConfiguration/File
+    properties:
+      DestinationPath: /tmp/test.txt
+      Contents: test content
+      Ensure: Present
