@@ -43,3 +43,6 @@ mod 'puppetlabs-concat', '9.1.0'
 
 mod 'puppetlabs-dsc', '1.9.4'
 mod 'puppetlabs-windows_env', '5.0.2'
+
+# Added for Puppet Metrics Collector to remove SS040 error in Console
+mod 'puppetlabs-puppet_metrics_collector', '8.2.1'
