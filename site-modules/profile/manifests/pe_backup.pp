@@ -1,30 +1,42 @@
+# Class: profile::pe_backup
+#
+# This class manages Puppet Enterprise backup automation.
+# It performs the following tasks:
+#   - Deploys a backup script to a specified location.
+#   - Schedules a cron job to run the backup script weekly.
+#   - Cleans up old backup files older than one week.
+#
+# Parameters:
+#   None (all values are hardcoded for simplicity, but can be parameterized if needed)
+#
+# Resources:
+#   - file: Ensures the backup script exists and is executable.
+#   - cron: Schedules the backup script to run every Friday at 2:00 AM.
+#   - tidy: Removes backup files older than one week to save disk space.
+#
 class profile::pe_backup {
-  #
-  # This is a placeholder class for PE Backup related configurations.
-  # You can add resources and configurations here as needed.
-  #
+  $backup_script_path = '/usr/local/bin/pe_backup.sh'
+  $cron_user          = 'root'
+  $backup_directory   = '/var/puppetlabs/backups'
+
   file { 'puppet backup script':
     ensure  => 'file',
-    path    => '/usr/local/bin/pe_backup.sh',
+    path    => $backup_script_path,
     content => template('profile/pe_backup.epp'),
     mode    => '0755',
   }
 
-  schedule { 'daily pe backup':
-    range  => '13 - 22',
-    period => daily,
-    repeat => 1,
-  }
-
-  exec { 'run pe backup':
-    command  => '/usr/local/bin/pe_backup.sh',
-    schedule => 'daily pe backup',
-    require  => File['puppet backup script'],
-    timeout  => 600,
+  cron { 'puppet_backup':
+    ensure  => present,
+    command => $backup_script_path,
+    user    => $cron_user,
+    minute  => '15',
+    hour    => '*',
+    weekday => '*',
   }
 
   tidy { 'cleanup pe backup':
-    path    => '/var/puppetlabs/backups',
+    path    => $backup_directory,
     age     => '1w',
     recurse => true,
     matches => ['pe-backup-*.tgz', 'orchestration-services-backup-*.tgz', 'console-services-backup-*.tgz'],
