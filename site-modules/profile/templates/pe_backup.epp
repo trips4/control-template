@@ -51,9 +51,6 @@ if ! $COMMAND; then
   exit 1
 fi
 
-
-
-echo "Backing up console-services secrets..."
 echo "Backing up orchestration-services secrets..."
 if ! tar -cvzf "$ORCH_BACKUP_FILE" -C "$(dirname "$ORCH_SECRETS")" "$(basename "$ORCH_SECRETS")"; then
   echo "[ERROR] Failed to backup orchestration-services secrets." >&2

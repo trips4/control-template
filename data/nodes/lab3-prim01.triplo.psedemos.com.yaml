@@ -1,0 +1,31 @@
+puppet_enterprise::profile::database::shared_buffers: 1566MB
+puppet_enterprise::puppetdb::command_processing_threads: 1
+puppet_enterprise::profile::puppetdb::java_args:
+  Xms: 783m
+  Xmx: 783m
+puppet_enterprise::profile::orchestrator::jruby_max_active_instances: 1
+puppet_enterprise::profile::orchestrator::java_args:
+  Xms: 783m
+  Xmx: 783m
+puppet_enterprise::profile::console::java_args:
+  Xms: 626m
+  Xmx: 626m
+puppet_enterprise::master::host_action_collector::java_args:
+  Xms: 256m
+  Xmx: 256m
+puppet_enterprise::master::puppetserver::jruby_max_active_instances: 1
+puppet_enterprise::profile::master::java_args:
+  Xms: 512m
+  Xmx: 512m
+puppet_enterprise::master::puppetserver::reserved_code_cache: 96m
+puppet_infrastructure_tune::metadata:
+  pe_version: 2025.7.0
+  tune_date: '2026-01-06'
+puppet_enterprise::profile::master::code_manager_autoconfigure: true
+puppet_enterprise::profile::master::r10k_known_hosts:
+  - name: "github.com"
+  - type: "rsa"
+  - key: "AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk="
+puppet_enterprise::profile::r10k_private_key: "/etc/puppetlabs/puppetserver/ssh/id-control_rep"
+puppet_enterprise::profile::r10k_remote: "git@github.com:trips4/control-template.git"
+puppet_enterprise::profile::replication_mode: "none"
