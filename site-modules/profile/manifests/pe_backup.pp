@@ -31,8 +31,8 @@ class profile::pe_backup {
     command => $backup_script_path,
     user    => $cron_user,
     minute  => '15',
-    #hour    => '2',
-    #weekday => '5',
+    hour    => '*',
+    weekday => '*',
   }
 
   tidy { 'cleanup pe backup':
