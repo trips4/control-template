@@ -1,8 +1,20 @@
+# Class: profile::pe_backup
+#
+# This class manages Puppet Enterprise backup automation.
+# It performs the following tasks:
+#   - Deploys a backup script to a specified location.
+#   - Schedules a cron job to run the backup script weekly.
+#   - Cleans up old backup files older than one week.
+#
+# Parameters:
+#   None (all values are hardcoded for simplicity, but can be parameterized if needed)
+#
+# Resources:
+#   - file: Ensures the backup script exists and is executable.
+#   - cron: Schedules the backup script to run every Friday at 2:00 AM.
+#   - tidy: Removes backup files older than one week to save disk space.
+#
 class profile::pe_backup {
-  #
-  # This is a placeholder class for PE Backup related configurations.
-  # You can add resources and configurations here as needed.
-  #
   $backup_script_path = '/usr/local/bin/pe_backup.sh'
   $cron_user          = 'root'
   $backup_directory   = '/var/puppetlabs/backups'
@@ -18,9 +30,9 @@ class profile::pe_backup {
     ensure  => present,
     command => $backup_script_path,
     user    => $cron_user,
-    minute  => '0',
-    hour    => '2',
-    weekday => '5',
+    minute  => '15',
+    #hour    => '2',
+    #weekday => '5',
   }
 
   tidy { 'cleanup pe backup':
