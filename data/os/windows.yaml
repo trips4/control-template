@@ -1,0 +1,1 @@
+profile::hiera_example::welcome_message: "Hello from windows.yaml"
