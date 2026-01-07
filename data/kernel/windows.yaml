@@ -1,5 +1,5 @@
 # A simple string value
-welcome_message: "Hello from Windows.yaml"
+profile::hiera_example::welcome_message: "Hello from Windows.yaml"
 
 # An array of values
 web_servers:
