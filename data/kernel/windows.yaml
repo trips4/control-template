@@ -1,3 +1,0 @@
-# A simple string value
-profile::hiera_example::welcome_message: "Hello from Windows.yaml"
-
