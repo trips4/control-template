@@ -1,1 +1,3 @@
-profile::test_hiera: 'This came from windows.yaml environment data'
+profile::test_hiera:
+  value1: 'This came from Windows.yaml environment data'
+  value2: 'Another value from Windows.yaml environment data'
