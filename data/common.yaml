@@ -4,3 +4,4 @@
 #  - profile::base
 
 comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
+profile::test_hiera: 'This came from common.yaml environment data'
