@@ -1,15 +1,3 @@
 # A simple string value
 profile::hiera_example::welcome_message: "Hello from Windows.yaml"
 
-# An array of values
-web_servers:
-  - "web01.example.com"
-  - "web02.example.com"
-  - "web03.example.com"
-
-# A hash (key-value pairs)
-database_config:
-  host: "db01.example.com"
-  port: 5432
-  username: "dbuser"
-  password: "supersecret"
