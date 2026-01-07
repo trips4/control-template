@@ -13,6 +13,5 @@ hierarchy:
     paths:
       - "nodes/%{trusted.certname}.yaml"
       - "os/%{facts.os.family}.yaml"
-      - "kernel/%{facts.kernel}.yaml"
       - "common.yaml"
     

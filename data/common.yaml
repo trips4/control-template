@@ -1,6 +1,16 @@
----
-# We use this hiera data file to ensure all nodes have at least the base profile applied
-#classes:
-#  - profile::base
 
-comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
+# A simple string value
+welcome_message: "Hello from Common.yaml"
+
+# An array of values
+web_servers:
+  - "web01.example.com"
+  - "web02.example.com"
+  - "web03.example.com"
+
+# A hash (key-value pairs)
+database_config:
+  host: "db01.example.com"
+  port: 5432
+  username: "dbuser"
+  password: "supersecret"

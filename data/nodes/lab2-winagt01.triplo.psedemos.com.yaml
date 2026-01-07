@@ -1,6 +1,6 @@
 
 # A simple string value
-welcome_message: "Hello from lab2-ubuagt01.triplo.psedemos.com.yaml"
+welcome_message: "Hello from lab2-winagt01.triplo.psedemos.com.yaml"
 
 # An array of values
 web_servers:
