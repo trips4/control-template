@@ -1,1 +1,1 @@
-#profile::hiera_example::welcome_message: "Hello from Common.yaml"
+profile::hiera_example::welcome_message: "Hello from Common.yaml"
