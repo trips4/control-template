@@ -12,6 +12,6 @@ hierarchy:
       pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
     paths:
       - "nodes/%{trusted.certname}.yaml"
-      - "os/%{facts.os.family}.yaml"
+      - "os/%{os.family}.yaml"
       - "common.yaml"
     
