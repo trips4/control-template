@@ -24,4 +24,10 @@ class profile::ssh_config {
     ensure => present,
     value  => 'yes',
   }
+
+  service { 'sshd':
+    ensure    => running,
+    enable    => true,
+    subscribe => Sshd_config <| |> ,
+  }
 }
