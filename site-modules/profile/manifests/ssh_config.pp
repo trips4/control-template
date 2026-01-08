@@ -19,4 +19,9 @@ class profile::ssh_config {
     ensure => present,
     value  => 'yes',
   }
+
+  sshd_config { 'PrintMotd':
+    ensure => present,
+    value  => 'yes',
+  }
 }
