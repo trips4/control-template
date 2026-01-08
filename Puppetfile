@@ -46,3 +46,5 @@ mod 'puppetlabs-windows_env', '5.0.2'
 
 # Added for Puppet Metrics Collector to remove SS040 error in Console
 mod 'puppetlabs-puppet_metrics_collector', '8.2.1'
+
+mod 'puppetlabs-motd', '7.3.0'
