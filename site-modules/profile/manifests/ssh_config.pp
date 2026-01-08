@@ -12,22 +12,24 @@ class profile::ssh_config {
   sshd_config { 'X11Forwarding':
     ensure => present,
     value  => 'no',
+    notify => Service['sshd'],
   }
 
   # Enable password authentication (set to 'no' to disable password logins)
   sshd_config { 'PasswordAuthentication':
     ensure => present,
     value  => 'yes',
+    notify => Service['sshd'],
   }
 
   sshd_config { 'PrintMotd':
     ensure => present,
-    value  => 'yes',
+    value  => 'no',
+    notify => Service['sshd'],
   }
 
   service { 'sshd':
-    ensure    => running,
-    enable    => true,
-    subscribe => Sshd_config <| |> ,
+    ensure => running,
+    enable => true,
   }
 }
