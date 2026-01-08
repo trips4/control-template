@@ -6,10 +6,11 @@ SERVICES=(
   "pe_databases-facts.timer"
   "pe_databases-other.timer"
 )
-COMMAND="/opt/puppetlabs/bin/puppet-backup create"
+
 BACKUP_DIR="/var/puppetlabs/backups"
 ORCH_SECRETS="/etc/puppetlabs/orchestration-services/conf.d/secrets"
 CONSOLE_SECRETS="/etc/puppetlabs/console-services/conf.d/secrets"
+COMMAND="/opt/puppetlabs/bin/puppet-backup create --dir=$BACKUP_DIR"
 
 # Add timestamp to backup filenames
 TIMESTAMP="$(date -u +%Y-%m-%d_%H.%M.%S_UTC)"
