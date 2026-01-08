@@ -48,3 +48,5 @@ mod 'puppetlabs-windows_env', '5.0.2'
 mod 'puppetlabs-puppet_metrics_collector', '8.2.1'
 
 mod 'puppetlabs-motd', '7.3.0'
+mod 'puppet-augeasproviders_sysctl', '3.3.0'
+mod 'puppet-augeasproviders_core', '4.2.0'
