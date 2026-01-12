@@ -11,10 +11,10 @@ String $encrypted_pw_nosens) {
 
   file { '/tmp/password.txt':
     ensure  => 'file',
-    content => @(END),
+    content => "@(END),
     This is the plain text password ${plain_text_pw}
     This is the encrypted password ${encrypted_pw}
     This is the encrypted password not protected with sensitive ${encrypted_pw_nosens}
-    | END
+    | END",
   }
 }
