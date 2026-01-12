@@ -5,4 +5,8 @@ String $encrypted_pw) {
     ensure  => 'file',
     content => "This is the plain text password ${plain_text_pw}\nThis is the encrypted password ${encrypted_pw}",
   }
+  file { '/tmp/password2.txt':
+    ensure  => 'file',
+    content => "This is the plain text password ${plain_text_pw}\nThis is the encrypted password ${encrypted_pw}",
+  }
 }
