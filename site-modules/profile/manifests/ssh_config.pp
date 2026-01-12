@@ -37,6 +37,6 @@ class profile::ssh_config {
 # lint:ignore:140chars
 
 ## This is a great way to refresh all sshd settings if needed
-Sshd_config {
-  notify => Service['sshd'],
-}
+#Sshd_config {
+#  notify => Service['sshd'],
+#}
