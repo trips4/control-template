@@ -6,3 +6,7 @@
 comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
 profile::demo::password::plain_text_pw: 'MyPlainTextPW'
 profile::demo::password::encrypted_pw: 'ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAeesxFm7SVbaGLxQqGzC0bN2Oc6aItAYWh7o933skF98UxDmiLLyZ9b4ghWinIcwrjd3anWKanPAUdUsp5Dd/MtOLu2Rkx9cwpKrGveuGN1/Cbf1RKW5ntMTCF9xvJi+VJ193JDD3t3yx53ZenX0ORCbvusNHgw5u6c3tLqgbp7Ox4hkJJfOMh+V3Ep2EAg1fPXlPa/f6z+vlTQpZGcoJj2Fm/9zadhjCbzLgurr0aF61H0UhMyxnFgtxRu7nMGi5wJlwFgNbEapFapFoWOwHQLNrM3EM+FO0+JqTTdLpQROTCYBo464d7EY+bijGMirvfhmHRYQ7cdE40TBibsSDZjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDus0sWthlFv4iLP1thXIcVgBAj6BiUcjuACJT79fYuAIwF]'
+
+lookup_options:
+  profile::demo::password::encrypted_pw:
+    convert_to: "Sensitive"
