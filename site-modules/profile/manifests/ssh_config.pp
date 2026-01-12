@@ -28,6 +28,12 @@ class profile::ssh_config {
     notify => Service['sshd'],
   }
 
+  sshd_config { 'PubkeyAuthentication':
+    ensure => present,
+    value  => 'yes',
+    notify => Service['sshd'],
+  }
+
   service { 'sshd':
     ensure => running,
     enable => true,
