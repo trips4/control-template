@@ -21,15 +21,14 @@ class profile::demo::password (
   # Write password values to a file for demonstration purposes
   file { '/tmp/password1.txt':
     ensure  => 'file',
-    content => "This is plain text ${plain_text_password}",
+    content => "This is the value from plain_text_password - ${plain_text_password}",
   }
   file { '/tmp/password2.txt':
     ensure  => 'file',
-    #content => "This is encrypted and sensitive ${encrypted_pw.unwrap}",
-    content => "This is encrypted and sensitive ${encrypted_pw}"
+    content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
   }
   file { '/tmp/password3.txt':
     ensure  => 'file',
-    content => "This is the encrypted not flagged sensitive ${encrypted_pw_nosens}",
+    content => "This is the value from encrypted_pw_nosens - ${encrypted_pw_nosens}",
   }
 }
