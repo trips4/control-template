@@ -16,7 +16,7 @@
 class profile::demo::password (
   String $plain_text_password,
   Sensitive[String] $encrypted_pw,
-  String $encrypted_pw_nosens,
+  String $encrypted_password,
 ) {
   # Write password values to a file for demonstration purposes
   file { '/tmp/password1.txt':
@@ -29,6 +29,6 @@ class profile::demo::password (
   }
   file { '/tmp/password3.txt':
     ensure  => 'file',
-    content => "This is the value from encrypted_pw_nosens - ${encrypted_pw_nosens}",
+    content => "This is the value from encrypted_password - ${encrypted_password}",
   }
 }
