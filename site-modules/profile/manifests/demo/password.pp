@@ -24,19 +24,37 @@ class profile::demo::password (
     ensure => 'file',
     path   => $file,
   }
-  file_line { 'Password 1':
-    ensure => present,
-    path   => $file,
-    line   => "This is the value from plain_text_password - ${plain_text_password}",
+  # file_line { 'Password 1':
+  #   ensure => present,
+  #   path   => $file,
+  #   line   => "This is the value from plain_text_password - ${plain_text_password}",
+  # }
+  # file_line { 'Password 2':
+  #   ensure => present,
+  #   path   => $file,
+  #   line   => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+  # }
+  # file_line { 'Password 3':
+  #   ensure => present,
+  #   path   => $file,
+  #   line   => "This is the value from encrypted_password - ${encrypted_password}",
+  # }
+
+  concat::fragment { 'password1':
+    target  => $file,
+    content => "This is the value from plain_text_password - ${plain_text_password}\n",
+    order   => '01',
   }
-  file_line { 'Password 2':
-    ensure => present,
-    path   => $file,
-    line   => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+
+  concat::fragment { 'password2':
+    target  => $file,
+    content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}\n",
+    order   => '02',
   }
-  file_line { 'Password 3':
-    ensure => present,
-    path   => $file,
-    line   => "This is the value from encrypted_password - ${encrypted_password}",
+
+  concat::fragment { 'password3':
+    target  => $file,
+    content => "This is the value from encrypted_password - ${encrypted_password}\n",
+    order   => '03',
   }
 }
