@@ -11,24 +11,31 @@
 #   class { 'profile::demo::password':
 #     plain_text_password         => 'myPassword',
 #     encrypted_pw          => Sensitive('encryptedValue'),
-#     encrypted_pw_nosens   => 'encryptedValue',
+#     encrypted_password   => 'encryptedValue',
 #   }
 class profile::demo::password (
   String $plain_text_password,
   Sensitive[String] $encrypted_pw,
   String $encrypted_password,
 ) {
+  $file = '/tmp/password_demo.txt'
   # Write password values to a file for demonstration purposes
-  file { '/tmp/password1.txt':
+  file { 'Write Password 1':
     ensure  => 'file',
+    path    => $file,
     content => "This is the value from plain_text_password - ${plain_text_password}",
+    append  => true,
   }
-  file { '/tmp/password2.txt':
+  file { 'Write Password 2':
     ensure  => 'file',
+    path    => $file,
     content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+    append  => true,
   }
-  file { '/tmp/password3.txt':
+  file { 'Write Password 3':
     ensure  => 'file',
+    path    => $file,
     content => "This is the value from encrypted_password - ${encrypted_password}",
+    append  => true,
   }
 }
