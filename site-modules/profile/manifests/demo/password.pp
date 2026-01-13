@@ -19,23 +19,24 @@ class profile::demo::password (
   String $encrypted_password,
 ) {
   $file = '/tmp/password_demo.txt'
-  # Write password values to a file for demonstration purposes
-  file { 'Write Password 1':
-    ensure  => 'file',
-    path    => $file,
-    content => "This is the value from plain_text_password - ${plain_text_password}",
-    append  => true,
+
+  file { 'Create Password Demo File':
+    ensure => 'file',
+    path   => $file,
   }
-  file { 'Write Password 2':
-    ensure  => 'file',
-    path    => $file,
-    content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
-    append  => true,
+  file_line { 'Password 1':
+    ensure => present,
+    path   => $file,
+    line   => "This is the value from plain_text_password - ${plain_text_password}",
   }
-  file { 'Write Password 3':
-    ensure  => 'file',
-    path    => $file,
-    content => "This is the value from encrypted_password - ${encrypted_password}",
-    append  => true,
+  file_line { 'Password 2':
+    ensure => present,
+    path   => $file,
+    line   => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+  }
+  file_line { 'Password 3':
+    ensure => present,
+    path   => $file,
+    line   => "This is the value from encrypted_password - ${encrypted_password}",
   }
 }
