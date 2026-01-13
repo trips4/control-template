@@ -25,7 +25,8 @@ class profile::demo::password (
   }
   file { '/tmp/password2.txt':
     ensure  => 'file',
-    content => "This is encrypted and sensitive ${encrypted_pw.unwrap}",
+    #content => "This is encrypted and sensitive ${encrypted_pw.unwrap}",
+    content => "This is encrypted and sensitive ${encrypted_pw}"
   }
   file { '/tmp/password3.txt':
     ensure  => 'file',
