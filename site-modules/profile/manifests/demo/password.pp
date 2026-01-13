@@ -9,19 +9,19 @@
 #
 # @example
 #   class { 'profile::demo::password':
-#     plain_text_pw         => 'myPassword',
+#     plain_text_password         => 'myPassword',
 #     encrypted_pw          => Sensitive('encryptedValue'),
 #     encrypted_pw_nosens   => 'encryptedValue',
 #   }
 class profile::demo::password (
-  String $plain_text_pw,
+  String $plain_text_password,
   Sensitive[String] $encrypted_pw,
   String $encrypted_pw_nosens,
 ) {
   # Write password values to a file for demonstration purposes
   file { '/tmp/password1.txt':
     ensure  => 'file',
-    content => "This is plain text ${plain_text_pw}",
+    content => "This is plain text ${plain_text_password}",
   }
   file { '/tmp/password2.txt':
     ensure  => 'file',
