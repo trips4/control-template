@@ -20,10 +20,18 @@ class profile::demo::password (
 ) {
   $file = '/tmp/password_demo.txt'
 
-  file { 'Create Password Demo File':
-    ensure => 'file',
-    path   => $file,
+  # file { 'Create Password Demo File':
+  #   ensure => 'file',
+  #   path   => $file,
+  # }
+
+  concat { $file :
+    ensure => present,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
   }
+
   # file_line { 'Password 1':
   #   ensure => present,
   #   path   => $file,
