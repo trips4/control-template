@@ -1,0 +1,16 @@
+
+name: Validate PR source branch is development
+on:
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  enforce-source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if not from development
+        if: ${{ github.head_ref != 'development' }}
+        run: |
+          echo "❌ Pull request must originate from the 'development' branch, not '${{ github.head_ref }}'"
+          exit 1
