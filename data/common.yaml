@@ -4,6 +4,3 @@
 #  - profile::base
 
 comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
-lookup_options:
-  '^profile::(.*)::.+pw$':
-    convert_to: 'Sensitive'
