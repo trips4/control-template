@@ -21,34 +21,33 @@ class profile::sudo_users (
     $admin_group = 'wheel'
   } else {
     $admin_group = 'sudo'
+    notify { "the admin group is ${admin_group}": }
   }
-  notify { "the admin group is ${admin_group}": }
-}
 
 # Transform the users hash with proper group and Sensitive password
-$users_with_group = $users.reduce({}) |$memo, $item| {
-  $username   = $item[0]
-  $attributes = $item[1]
+  $users_with_group = $users.reduce({}) |$memo, $item| {
+    $username   = $item[0]
+    $attributes = $item[1]
 
-  # Hash the password if provided
-  $hashed_password = $attributes['password'] ? {
-    undef   => undef,
-    default => pw_hash($attributes['password'], 'SHA-512', 'myrandomstring'),
+    # Hash the password if provided
+    $hashed_password = $attributes['password'] ? {
+      undef   => undef,
+      default => pw_hash($attributes['password'], 'SHA-512', 'myrandomstring'),
+    }
+
+    # Merge original attributes with group and Sensitive password
+    $final_attributes = merge($attributes, {
+        'groups'   => [$admin_group],
+        'password' => $hashed_password ? {
+          undef   => undef,
+          default => Sensitive($hashed_password),
+        }
+    })
+
+    # Add this user to the accumulator hash
+    merge($memo, { $username => $final_attributes })
   }
 
-  # Merge original attributes with group and Sensitive password
-  $final_attributes = merge($attributes, {
-      'groups'   => [$admin_group],
-      'password' => $hashed_password ? {
-        undef   => undef,
-        default => Sensitive($hashed_password),
-      }
-  })
-
-  # Add this user to the accumulator hash
-  merge($memo, { $username => $final_attributes })
-}
-
 # Create user resources dynamically
-create_resources('user', $users_with_group)
+  create_resources('user', $users_with_group)
 }
