@@ -18,9 +18,9 @@ patching_as_code::patch_schedule:
     hours: 21:00 - 23:00
     max_runs: 3
     reboot: never
-  # group3:
-  #   day_of_week: Any
-  #   count_of_week: 3
-  #   hours: 18:00 - 20:00
-  #   max_runs: 4
-  #   reboot: always
+  group3:
+    day_of_week: Any
+    count_of_week: 3
+    hours: 18:00 - 20:00
+    max_runs: 4
+    reboot: always
