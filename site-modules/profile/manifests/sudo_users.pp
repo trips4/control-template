@@ -8,7 +8,6 @@
 #   A hash of user definitions. Each key is a username, and each value is a hash of user attributes (including 'password').
 #   Passwords are hashed using SHA-512 and wrapped in Sensitive for security.
 ##
-
 class profile::sudo_users (
   Hash $users,
 ) {
