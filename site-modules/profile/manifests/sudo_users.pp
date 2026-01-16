@@ -12,12 +12,17 @@ class profile::sudo_users (
     $username   = $item[0]
     $attributes = $item[1]
 
+    $hashed_password = $attributes['password'] ? {
+      undef   => undef,
+      default => pw_hash($attributes['password'], 'SHA-512', 'myrandomstring'),
+    }
+
     # If password exists, wrap it in Sensitive
     $final_attributes = merge($attributes, {
         'groups'   => [$admin_group],
-        'password' => $attributes['password'] ? {
+        'password' => $hashed_password ? {
           undef   => undef,
-          default => Sensitive($attributes['password']),
+          default => Sensitive($hashed_password),
         }
     })
 
