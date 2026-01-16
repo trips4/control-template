@@ -6,6 +6,12 @@
 comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
 
 patching_as_code::patch_schedule:
+  primary:
+    day_of_week: Sunday
+    count_of_week: 2
+    hours: 10:00 - 11:00
+    max_runs: 1
+    reboot: ifneeded
   group1:
     day_of_week: Sunday
     count_of_week: 2
