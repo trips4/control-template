@@ -8,6 +8,7 @@
 #   A hash of user definitions. Each key is a username, and each value is a hash of user attributes (including 'password').
 #   Passwords are hashed using SHA-512 and wrapped in Sensitive for security.
 ##
+
 class profile::sudo_users (
   Hash $users,
 ) {
@@ -18,7 +19,10 @@ class profile::sudo_users (
   }
 
   # Transform the users hash with proper group and Sensitive password
-  $users_with_group = $users.reduce({}) |$memo, $username, $attributes| {
+  $users_with_group = $users.reduce({}) |$memo, $item| {
+    $username   = $item[0]
+    $attributes = $item[1]
+
     # Hash the password if provided
     $hashed_password = $attributes['password'] ? {
       undef   => undef,
@@ -27,11 +31,11 @@ class profile::sudo_users (
 
     # Merge original attributes with group and Sensitive password
     $final_attributes = merge($attributes, {
-        'groups'   => [$admin_group],
-        'password' => $hashed_password ? {
-          undef   => undef,
-          default => Sensitive($hashed_password),
-        }
+      'groups'   => [$admin_group],
+      'password' => $hashed_password ? {
+        undef   => undef,
+        default => Sensitive($hashed_password),
+      }
     })
 
     # Add this user to the accumulator hash
@@ -41,3 +45,4 @@ class profile::sudo_users (
   # Create user resources dynamically
   create_resources('user', $users_with_group)
 }
+
