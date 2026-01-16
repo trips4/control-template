@@ -31,11 +31,11 @@ class profile::sudo_users (
 
     # Merge original attributes with group and Sensitive password
     $final_attributes = merge($attributes, {
-      'groups'   => [$admin_group],
-      'password' => $hashed_password ? {
-        undef   => undef,
-        default => Sensitive($hashed_password),
-      }
+        'groups'   => [$admin_group],
+        'password' => $hashed_password ? {
+          undef   => undef,
+          default => Sensitive($hashed_password),
+        }
     })
 
     # Add this user to the accumulator hash
@@ -45,4 +45,3 @@ class profile::sudo_users (
   # Create user resources dynamically
   create_resources('user', $users_with_group)
 }
-
