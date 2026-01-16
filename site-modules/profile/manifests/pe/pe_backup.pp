@@ -1,4 +1,4 @@
-# Class: profile::pe_backup
+# Class: profile::pe::pe_backup
 #
 # This class manages Puppet Enterprise backup automation.
 # It performs the following tasks:
@@ -14,7 +14,7 @@
 #   - cron: Schedules the backup script to run every Friday at 2:00 AM.
 #   - tidy: Removes backup files older than one week to save disk space.
 #
-class profile::pe_backup {
+class profile::pe::pe_backup {
   $backup_script_path = '/usr/local/bin/pe_backup.sh'
   $cron_user          = 'root'
   $backup_directory   = '/var/puppetlabs/backups'
@@ -37,7 +37,7 @@ class profile::pe_backup {
 
   tidy { 'cleanup pe backup':
     path    => $backup_directory,
-    age     => '1w',
+    age     => '2d',
     recurse => true,
     matches => ['pe-backup-*.tgz', 'orchestration-services-backup-*.tgz', 'console-services-backup-*.tgz'],
   }

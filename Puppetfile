@@ -30,16 +30,12 @@ mod 'puppetlabs-ruby_task_helper', '1.0.0'
 mod 'puppetlabs-inifile', '6.2.0'
 
 # Added for SCE
-# mod 'puppetlabs-concat', '9.1.0'
-# mod 'puppetlabs-augeas_core', '1.5.0' #This could not be set to latest 2.x due to compatibility issues
-# mod 'puppetlabs-firewall', '8.2.0'
-# mod 'puppet-logrotate', '9.0.0'
-# mod 'puppet-selinux', '5.0.0'
-# mod 'puppet-systemd', '6.6.0' #This could not be set to latest 7.x due to compatibility issues
-
-mod 'saz-ssh', '14.1.0'
-mod 'puppet-systemd', '6.6.0'
 mod 'puppetlabs-concat', '9.1.0'
+mod 'puppetlabs-augeas_core', '1.5.0' #This could not be set to latest 2.x due to compatibility issues
+mod 'puppetlabs-firewall', '8.2.0'
+mod 'puppet-logrotate', '9.0.0'
+mod 'puppet-selinux', '5.0.0'
+mod 'puppet-systemd', '6.6.0' #This could not be set to latest 7.x due to compatibility issues
 
 mod 'puppetlabs-dsc', '1.9.4'
 mod 'puppetlabs-windows_env', '5.0.2'
@@ -50,3 +46,4 @@ mod 'puppetlabs-puppet_metrics_collector', '8.2.1'
 mod 'puppetlabs-motd', '7.3.0'
 mod 'puppet-augeasproviders_sysctl', '3.3.0'
 mod 'puppet-augeasproviders_core', '4.2.0'
+mod 'puppet-augeasproviders_ssh', '7.0.0'
