@@ -47,3 +47,9 @@ mod 'puppetlabs-motd', '7.3.0'
 mod 'puppet-augeasproviders_sysctl', '3.3.0'
 mod 'puppet-augeasproviders_core', '4.2.0'
 mod 'puppet-augeasproviders_ssh', '7.0.0'
+
+# Added for Patch Management
+mod 'puppetlabs-patching_as_code', '2.0.1'
+mod 'puppetlabs-puppet_agent', '4.26.0'
+mod 'puppetlabs-facts', '1.7.0'
+mod 'puppetlabs-reboot', '5.1.0'
