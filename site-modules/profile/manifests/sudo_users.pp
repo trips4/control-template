@@ -8,14 +8,19 @@
 #   A hash of user definitions. Each key is a username, and each value is a hash of user attributes (including 'password').
 #   Passwords are hashed using SHA-512 and wrapped in Sensitive for security.
 ##
-
 class profile::sudo_users (
   Hash $users,
 ) {
   # Determine the appropriate admin group based on OS family
-  $admin_group = $facts['os']['family'] ? {
-    'RedHat' => 'wheel',
-    default  => 'sudo',
+  # $admin_group = $facts['os']['family'] ? {
+  #   'RedHat' => 'wheel',
+  #   default  => 'sudo',
+  # }
+
+  if $trusted['certname'].match(/^.*alm.*/) {
+    $admin_group = 'wheel'
+  } else {
+    $admin_group = 'sudo'
   }
 
   # Transform the users hash with proper group and Sensitive password
