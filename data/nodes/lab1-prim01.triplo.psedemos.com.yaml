@@ -27,3 +27,6 @@ puppet_enterprise::master::code_manager::sources:
   bad_cust:
     remote: "git@github.com:trips4/Bad-Customer.git"
     prefix: true
+  baseline:
+    remote: "git@github.com:trips4/baseline.git"
+    prefix: false
