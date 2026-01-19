@@ -4,14 +4,14 @@ puppet_enterprise::profile::master::r10k_known_hosts:
     type: "ed25519"
     key: "AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
 puppet_enterprise::master::code_manager::git_settings:
-  #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+  private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
   repositories:
     - remote: "git@github.com:trips4/control-template.git"
-      private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     - remote: "git@github.com:trips4/Great-Customer.git"
-      private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     - remote: "git@github.com:trips4/Good-Customer.git"
-      private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     # - remote: "git@github.com:trips4/Bad-Customer.git"
     #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
 puppet_enterprise::master::code_manager::sources:
