@@ -8,8 +8,8 @@ puppet_enterprise::master::code_manager::git_settings:
   repositories:
     - remote: "git@github.com:trips4/control-template.git"
       private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
-    # - remote: "git@github.com:trips4/Great-Customer.git"
-    #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    - remote: "git@github.com:trips4/Great-Customer.git"
+      private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     # - remote: "git@github.com:trips4/Good-Customer.git"
     #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     # - remote: "git@github.com:trips4/Bad-Customer.git"
@@ -18,9 +18,9 @@ puppet_enterprise::master::code_manager::sources:
   puppet:
     remote: "git@github.com:trips4/control-template.git"
     prefix: false
-  # great_cust:
-  #   remote: "git@github.com:trips4/Great-Customer.git"
-  #   prefix: true
+    great_cust:
+      remote: "git@github.com:trips4/Great-Customer.git"
+      prefix: true
   # good_cust:
   #   remote: "git@github.com:trips4/Good-Customer.git"
   #   prefix: true
