@@ -12,7 +12,7 @@ puppet_enterprise::master::code_manager::git_settings:
       #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     - remote: "git@github.com:trips4/Good-Customer.git"
       #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
-    # - remote: "git@github.com:trips4/Bad-Customer.git"
+    - remote: "git@github.com:trips4/Bad-Customer.git"
     #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
 puppet_enterprise::master::code_manager::sources:
   puppet:
@@ -24,6 +24,6 @@ puppet_enterprise::master::code_manager::sources:
   good_cust:
     remote: "git@github.com:trips4/Good-Customer.git"
     prefix: true
-  # bad_cust:
-  #   remote: "git@github.com:trips4/Bad-Customer.git"
-  #   prefix: true
+  bad_cust:
+    remote: "git@github.com:trips4/Bad-Customer.git"
+    prefix: true
