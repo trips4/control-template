@@ -21,7 +21,12 @@ puppet_enterprise::master::puppetserver::reserved_code_cache: 96m
 puppet_infrastructure_tune::metadata:
   pe_version: 2025.7.0
   tune_date: '2026-01-06'
-puppet_enterprise::profile::master::code_manager_autoconfigure: true
+
+puppet_enterprise::master::code_manager::git_settings:
+  private-key: 'etc/puppetlabs/puppetserver/ssh/id-control_rep'
+  repositories:
+    - remote: 'git@github.com:trips4/control-template.git'
+puppet_enterprise::profile::master::
 puppet_enterprise::profile::master::r10k_known_hosts:
   - name: "github.com"
   - type: "rsa"
