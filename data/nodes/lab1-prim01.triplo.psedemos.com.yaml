@@ -1,3 +1,4 @@
+# Settings below are for configuring code manager on PE master to use multiple git repos
 puppet_enterprise::profile::master::code_manager_auto_configure: true
 puppet_enterprise::profile::master::r10k_known_hosts:
   - name: "github.com"
