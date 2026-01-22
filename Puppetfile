@@ -53,3 +53,7 @@ mod 'puppetlabs-patching_as_code', '2.0.1'
 mod 'puppetlabs-puppet_agent', '4.26.0'
 mod 'puppetlabs-facts', '1.7.0'
 mod 'puppetlabs-reboot', '5.1.0'
+
+mod 'baseline',
+  git:    'git@github.com:trips4/baseline.git',
+  branch: 'feature_baseline_add'
