@@ -30,3 +30,5 @@ patching_as_code::patch_schedule:
     hours: 18:00 - 20:00
     max_runs: 4
     reboot: always
+
+  autosign::password: "b6137757c1f886d4027fa8b97287967cb0ef6cdb504626b1d20f3179d4e31311"
