@@ -65,3 +65,35 @@ patching_as_code::patch_schedule:
     hours: 18:00 - 20:00
     max_runs: 4
     reboot: always
+
+  autosign::password: "b6137757c1f886d4027fa8b97287967cb0ef6cdb504626b1d20f3179d4e31311"
+
+  puppet_enterprise::profile::master::code_manager_auto_configure: true
+puppet_enterprise::profile::master::r10k_known_hosts:
+  - name: "github.com"
+    type: "ed25519"
+    key: "AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
+puppet_enterprise::master::code_manager::git_settings:
+  private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+  repositories:
+    - remote: "git@github.com:trips4/control-template.git"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    - remote: "git@github.com:trips4/Great-Customer.git"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    - remote: "git@github.com:trips4/Good-Customer.git"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    - remote: "git@github.com:trips4/Bad-Customer.git"
+      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+puppet_enterprise::master::code_manager::sources: # These only apply to control repos
+  puppet:
+    remote: "git@github.com:trips4/control-template.git"
+    prefix: false
+  great_cust:
+    remote: "git@github.com:trips4/Great-Customer.git"
+    prefix: true
+  good_cust:
+    remote: "git@github.com:trips4/Good-Customer.git"
+    prefix: true
+  bad_cust:
+    remote: "git@github.com:trips4/Bad-Customer.git"
+    prefix: true

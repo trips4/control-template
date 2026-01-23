@@ -1,18 +1,41 @@
+# ---
+# version: 5
+
+# defaults:               # Used for any hierarchy level that omits these keys.
+#   datadir: "data"       # This path is relative to hiera.yaml's directory.
+
+# hierarchy:
+#   - name: "Yaml Data"
+#     lookup_key: eyaml_lookup_key
+#     options:
+#       pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
+#       pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
+#     paths:
+#       - "nodes/%{trusted.certname}.yaml"
+#       - "os/%{facts.os.family}.yaml"
+#       - "kernel/%{facts.kernel}.yaml"
+#       - "common.yaml"
 ---
 version: 5
 
-defaults:               # Used for any hierarchy level that omits these keys.
-  datadir: "data"       # This path is relative to hiera.yaml's directory.
+defaults:
+  datadir: "data"
+  lookup_key: eyaml_lookup_key
+  options:
+    pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
+    pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
 
 hierarchy:
-  - name: "Yaml Data"
-    lookup_key: eyaml_lookup_key
-    options:
-      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
-      pkcs7_public_key:  /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
-    paths:
-      - "nodes/%{trusted.certname}.yaml"
-      - "os/%{facts.os.family}.yaml"
-      - "kernel/%{facts.kernel}.yaml"
-      - "common.yaml"
+  - name: "Node-specific data"
+    path: "nodes/%{trusted.certname}.yaml"
+
+  - name: "OS family data"
+    path: "os/%{facts.os.family}.yaml"
+
+  - name: "Kernel data"
+    path: "kernel/%{facts.kernel}.yaml"
+
+  - name: "Common data"
+    path: "common.yaml"
+
     
