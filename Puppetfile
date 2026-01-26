@@ -56,4 +56,4 @@ mod 'puppetlabs-reboot', '5.1.0'
 
 mod 'baseline',
   git:    'git@github.com:trips4/baseline.git',
-  branch: 'feature_gloo'
+  branch: 'main'
