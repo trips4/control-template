@@ -74,7 +74,7 @@ bad_cust::pp_preshared_key: "bad_cust_key"
 
 baseline::users::logins:
   - name: "testuser5"
-    shell: "/bin/bash"
   - name: "testuser6"
-    shell: "/bin/bash"
+    sshkeys: "AAAAB3NzaC1yc2EAAAABIwAAAQEArD1..."
+
 
