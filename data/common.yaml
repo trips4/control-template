@@ -73,8 +73,8 @@ profile::autosign::password: "b6137757c1f886d4027fa8b97287967cb0ef6cdb504626b1d2
 autosign::psk::default: "global-default-psk"
 
 # Environment+role+project specific PSKs
-autosign::psk::env_role_project::production::web::payments: "prod-web-payments-psk"
-autosign::psk::env_role_project::production::db::payments:  "prod-db-payments-psk"
+autosign::psk::env_role_project::production::web::good_cust: "prod-web-good_cust-psk"
+autosign::psk::env_role_project::production::db::good_cust:  "prod-db-good_cust-psk"
 
 # Environment+role fallback
 autosign::psk::env_role::production::web:  "prod-web-psk"
