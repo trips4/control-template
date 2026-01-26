@@ -72,3 +72,9 @@ good_cust::pp_preshared_key: "good_cust_key"
 great_cust::pp_preshared_key: "great_cust_key"
 bad_cust::pp_preshared_key: "bad_cust_key"
 
+baseline::users::logins:
+  - name: "testuser5"
+    shell: "/bin/bash"
+  - name: "testuser6"
+    shell: "/bin/bash"
+
