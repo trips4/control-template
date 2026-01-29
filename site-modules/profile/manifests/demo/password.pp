@@ -19,13 +19,13 @@ class profile::demo::password (
   #   message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
   # }
 
-  notify { 'title':
-    message => "This is the value from encrypted_pw - ${encrypted_pw}",
-  }
+  # notify { 'title':
+  #   message => "This is the value from encrypted_pw - ${encrypted_pw}",
+  # }
 
-  notify { 'title2':
-    message => "This is the value from encrypted_password - ${encrypted_password}",
-  }
+  # notify { 'title2':
+  #   message => "This is the value from encrypted_password - ${encrypted_password}",
+  # }
 
   file { '/tmp/file1':
     ensure  => 'file',
