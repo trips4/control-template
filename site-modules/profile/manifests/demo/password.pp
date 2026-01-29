@@ -15,58 +15,21 @@ class profile::demo::password (
   Sensitive[String] $encrypted_pw,
   String $encrypted_password,
 ) {
-  # notify { 'title':
-  #   message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
-  # }
+  $file = '/tmp/password_demo.txt'
 
-  # notify { 'title':
-  #   message => "This is the value from encrypted_pw - ${encrypted_pw}",
-  # }
-
-  # notify { 'title2':
-  #   message => "This is the value from encrypted_password - ${encrypted_password}",
-  # }
-
-  file { '/tmp/file1':
+  file { $file :
     ensure  => 'file',
-    content => "This is the value from encrypted_pw - ${encrypted_pw}",
   }
 
-  file { '/tmp/file2':
-    ensure  => 'file',
-    content => "This is the value from encrypted_pw - ${encrypted_password}",
+  file_line { 'Password 1':
+    ensure  => present,
+    path    => $file,
+    content => "This password ${encrypted_pw} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_pw' ",
   }
 
-  file { '/tmp/file3':
-    ensure  => 'file',
-    content => "This is the value from encrypted_password - ${encrypted_password.unwrap}",
+  file_line { 'Password 2':
+    ensure  => present,
+    path    => $file,
+    content => "This password ${encrypted_password} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
   }
-
-  # file { 'Create Password Demo File':
-  #   ensure => 'file',
-  #   path   => $file,
-  # }
-
-  # concat { $file :
-  #   ensure => present,
-  #   owner  => 'root',
-  #   group  => 'root',
-  #   mode   => '0644',
-  # }
-
-  # file_line { 'Password 1':
-  #   ensure => present,
-  #   path   => $file,
-  #   line   => "This is the value from plain_text_password - ${plain_text_password}",
-  # }
-  # file_line { 'Password 2':
-  #   ensure => present,
-  #   path   => $file,
-  #   line   => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
-  # }
-  # file_line { 'Password 3':
-  #   ensure => present,
-  #   path   => $file,
-  #   line   => "This is the value from encrypted_password - ${encrypted_password}",
-  # }
 }
