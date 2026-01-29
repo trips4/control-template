@@ -1,0 +1,17 @@
+{
+  "description": "Releases (unholds) an Ubuntu package to allow updates using apt-mark",
+  "input_method": "environment",
+  "parameters": {
+    "package": {
+      "description": "The package name to release",
+      "type": "String",
+      "sensitive": false
+    }
+  },
+  "implementations": [
+    {
+      "name": "ubuntu_release_package.sh",
+      "requirements": ["shell"]
+    }
+  ]
+}
