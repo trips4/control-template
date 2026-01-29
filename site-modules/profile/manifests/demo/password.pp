@@ -19,17 +19,25 @@ class profile::demo::password (
 ) {
   $file = '/tmp/password_demo.txt'
 
+  notify { 'title':
+    message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+  }
+
+  notify { 'title2':
+    message => "This is the value from encrypted_password - ${encrypted_password}",
+  }
+
   # file { 'Create Password Demo File':
   #   ensure => 'file',
   #   path   => $file,
   # }
 
-  concat { $file :
-    ensure => present,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
-  }
+  # concat { $file :
+  #   ensure => present,
+  #   owner  => 'root',
+  #   group  => 'root',
+  #   mode   => '0644',
+  # }
 
   # file_line { 'Password 1':
   #   ensure => present,
@@ -46,17 +54,4 @@ class profile::demo::password (
   #   path   => $file,
   #   line   => "This is the value from encrypted_password - ${encrypted_password}",
   # }
-
-  concat::fragment { 'password1':
-    target  => $file,
-    content => "${encrypted_pw.unwrap}\n",
-    order   => '01',
-  }
-
-  concat::fragment { 'password2':
-    target  => $file,
-    content => "${encrypted_password}\n",
-    order   => '02',
-  }
-
 }
