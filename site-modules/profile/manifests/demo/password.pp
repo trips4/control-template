@@ -58,4 +58,7 @@ class profile::demo::password (
     content => "${encrypted_password}\n",
     order   => '02',
   }
+  test { 'Password Demo Completed':
+    require => Concat[$file],
+  }
 }
