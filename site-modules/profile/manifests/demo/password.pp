@@ -18,13 +18,12 @@ class profile::demo::password (
   # BETTER/BEST: password typed as Sensitive
   Sensitive[String] $sensitive_password,
 ) {
-
   # ──────────────────────────────────────────────
   # 1. BAD EXAMPLE – plain String in logs & catalog
   # ──────────────────────────────────────────────
 
   $message1 = @("END_M1")
-This password (${insecure_password}) was encrypted with 'eyaml encrypt' and stored in Hiera,
+    This password (${insecure_password}) was encrypted with 'eyaml encrypt' and stored in Hiera,
 but our class parameter is just a plain String.
 At catalog compilation time, the Puppet Server decrypts it and puts the clear-text value
 directly into the catalog. That catalog can end up in PuppetDB and may be visible in the
@@ -48,7 +47,7 @@ END_M1
   # This is an improvement, but not perfect.
 
   $message2 = @("END_M2")
-This password (${sensitive_password}) was also encrypted with 'eyaml encrypt' and stored in Hiera,
+    This password (${sensitive_password}) was also encrypted with 'eyaml encrypt' and stored in Hiera,
 but this time our class parameter type is Sensitive[String].
 At catalog compilation, the Puppet Server decrypts it and wraps it in a Sensitive object.
 When we interpolate it, Puppet will not show the real value. Instead, it shows:
@@ -75,8 +74,8 @@ END_M2
   # This is the recommended way to handle secrets when writing them to files.
 
   $message3 = @("END_M3")
-In this example, we still use a Sensitive[String] value from Hiera,
-but we combine it with a Deferred function: Deferred('unwrap', [$sensitive_password]).
+    In this example, we still use a Sensitive[String] value from Hiera,
+but we combine it with a Deferred function: Deferred('unwrap', [${sensitive_password}]).
 
 The unwrap does NOT happen on the Puppet Server.
 Instead, the catalog contains a deferred function call, and the unwrap is executed
