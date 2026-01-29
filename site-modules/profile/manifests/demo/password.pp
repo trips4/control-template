@@ -19,8 +19,12 @@ class profile::demo::password (
 ) {
   $file = '/tmp/password_demo.txt'
 
+  # notify { 'title':
+  #   message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+  # }
+
   notify { 'title':
-    message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
+    message => "This is the value from encrypted_pw - ${encrypted_pw}",
   }
 
   notify { 'title2':
