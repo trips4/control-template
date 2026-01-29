@@ -31,8 +31,10 @@ class profile::demo::password (
 
   file { '/tmp/hiera_encrypted_sensitive_unwrapped':
     ensure  => file,
-    content => "This password ${encrypted_pw.unwrap} was encrypted and added to hiera.\n
+    content => "This password Deferred(${encrypted_pw.unwrap}) was encrypted and added to hiera.\n
     Our class parameter was typed to sensitive, requiring us to assign it as such in hiera.\n
     We used the 'unwrap' method to access its unencrypted value at the time we created the file",
   }
+
+
 }
