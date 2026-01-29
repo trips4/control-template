@@ -53,7 +53,7 @@ class profile::demo::password (
     order   => '02',
   }
 
-  concat::fragment { 'password1':
+  concat::fragment { 'password2':
     target  => $file,
     content => "This is the value from encrypted_password - ${encrypted_password}\n",
     order   => '03',
