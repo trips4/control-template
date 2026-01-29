@@ -11,7 +11,7 @@
 #     encrypted_pw          => Sensitive('encryptedValue'),
 #     encrypted_password   => 'encryptedValue',
 #   }
-class profile::demo::secrets (
+class profile::demo::password (
   # BAD: plain String password (decrypted at compile time, stored in catalog)
   String $insecure_password,
 
