@@ -3,13 +3,11 @@
 #
 # This class demonstrates the use of plain, sensitive, and non-sensitive encrypted password parameters.
 #
-# @param plain_text_pw Plain text password value.
 # @param encrypted_pw Encrypted password value, marked as Sensitive.
-# @param encrypted_pw_nosens Encrypted password value, not marked as Sensitive.
+# @param encrypted_password Encrypted password value, not marked as Sensitive.
 #
 # @example
 #   class { 'profile::demo::password':
-#     plain_text_password         => 'myPassword',
 #     encrypted_pw          => Sensitive('encryptedValue'),
 #     encrypted_password   => 'encryptedValue',
 #   }
@@ -17,8 +15,6 @@ class profile::demo::password (
   Sensitive[String] $encrypted_pw,
   String $encrypted_password,
 ) {
-  $file = '/tmp/password_demo.txt'
-
   # notify { 'title':
   #   message => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}",
   # }
@@ -29,6 +25,21 @@ class profile::demo::password (
 
   notify { 'title2':
     message => "This is the value from encrypted_password - ${encrypted_password}",
+  }
+
+  file { '/tmp/file1':
+    ensure  => 'file',
+    content => "This is the value from encrypted_pw - ${encrypted_pw}",
+  }
+
+  file { '/tmp/file2':
+    ensure  => 'file',
+    content => "This is the value from encrypted_pw - ${encrypted_password}",
+  }
+
+  file { '/tmp/file3':
+    ensure  => 'file',
+    content => "This is the value from encrypted_password - ${encrypted_password.unwrap}",
   }
 
   # file { 'Create Password Demo File':
