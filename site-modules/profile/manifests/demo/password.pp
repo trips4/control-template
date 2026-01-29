@@ -22,14 +22,14 @@ class profile::demo::password (
   }
 
   file_line { 'Password 1':
-    ensure  => present,
-    path    => $file,
-    content => "This password ${encrypted_pw} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_pw' ",
+    ensure => present,
+    path   => $file,
+    line   => "This password ${encrypted_pw} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_pw' ",
   }
 
   file_line { 'Password 2':
-    ensure  => present,
-    path    => $file,
-    content => "This password ${encrypted_password} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
+    ensure => present,
+    path   => $file,
+    line   => "This password ${encrypted_password} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
   }
 }
