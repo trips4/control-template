@@ -17,16 +17,22 @@ class profile::demo::password (
 ) {
   file { '/tmp/hiera_encrypted':
     ensure  => file,
-    content => "This password ${encrypted_password} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_password'/n ",
+    content => "This password ${encrypted_password} was encrypted via 'eyaml encrypt' cmd and added to hiera.\n
+    During compilation it was decrypted and assigned to the 'encrypted_password' via auto-param lookup.\n
+    Its unencrypted value could be exposed in logs or reports if not handled carefully.",
   }
 
   file { '/tmp/hiera_encrypted_sensitive':
     ensure  => file,
-    content => "This password ${encrypted_pw} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
+    content => "This password ${encrypted_pw} was encrypted and added to hiera.\n
+    Our class parameter was typed to sensitive, requiring us to assign it as such in hiera\n
+    Its unencrypted value is protected and can be accessed securely using the 'unwrap' method.",
   }
 
   file { '/tmp/hiera_encrypted_sensitive_unwrapped':
     ensure  => file,
-    content => "This password ${encrypted_pw.unwrap} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera.  We then unwrapped it to put it in our config file.",
+    content => "This password ${encrypted_pw.unwrap} was encrypted and added to hiera.\n
+    Our class parameter was typed to sensitive, requiring us to assign it as such in hiera.\n
+    We used the 'unwrap' method to access its unencrypted value at the time we created the file",
   }
 }
