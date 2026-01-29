@@ -49,13 +49,13 @@ class profile::demo::password (
 
   concat::fragment { 'password1':
     target  => $file,
-    content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}\n",
-    order   => '02',
+    content => "${encrypted_pw.unwrap}\n",
+    order   => '01',
   }
 
   concat::fragment { 'password2':
     target  => $file,
-    content => "This is the value from encrypted_password - ${encrypted_password}\n",
-    order   => '03',
+    content => "${encrypted_password}\n",
+    order   => '02',
   }
 }
