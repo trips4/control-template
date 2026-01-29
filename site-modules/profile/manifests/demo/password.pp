@@ -15,25 +15,18 @@ class profile::demo::password (
   Sensitive[String] $encrypted_pw,
   String $encrypted_password,
 ) {
-  $file = '/tmp/password_demo.txt'
-
-  file { $file :
-    ensure  => 'file',
+  file { '/tmp/hiera_encrypted':
+    ensure  => file,
+    content => "This password ${encrypted_password} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_password'/n ",
   }
 
-  file_line { 'Password 1':
-    ensure  => present,
-    path    => $file,
-    line    => "This password ${encrypted_password} was encrypted and added tov hiera. During compilation it was decrypted and assigned to 'encrypted_password'/n ",
-    match   => "^${encrypted_password}",
-    replace => true,
+  file { '/tmp/hiera_encrypted_sensitive':
+    ensure  => file,
+    content => "This password ${encrypted_pw} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
   }
 
-  file_line { 'Password 2':
-    ensure  => present,
-    path    => $file,
-    line    => "This password ${encrypted_pw} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera",
-    match   => "^${encrypted_pw}",
-    replace => true,
+  file { '/tmp/hiera_encrypted_sensitive_unwrapped':
+    ensure  => file,
+    content => "This password ${encrypted_pw.unwrap} was encrypted and added to hiera. Our class parameter was typed to sensitive, requiring us to assign it as such in hiera.  We then unwrapped it to put it in our config file.",
   }
 }
