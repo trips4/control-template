@@ -14,7 +14,6 @@
 #     encrypted_password   => 'encryptedValue',
 #   }
 class profile::demo::password (
-  String $plain_text_password,
   Sensitive[String] $encrypted_pw,
   String $encrypted_password,
 ) {
@@ -50,17 +49,11 @@ class profile::demo::password (
 
   concat::fragment { 'password1':
     target  => $file,
-    content => "This is the value from plain_text_password - ${plain_text_password}\n",
-    order   => '01',
-  }
-
-  concat::fragment { 'password2':
-    target  => $file,
     content => "This is the value from encrypted_pw - ${encrypted_pw.unwrap}\n",
     order   => '02',
   }
 
-  concat::fragment { 'password3':
+  concat::fragment { 'password1':
     target  => $file,
     content => "This is the value from encrypted_password - ${encrypted_password}\n",
     order   => '03',
