@@ -20,9 +20,11 @@ class profile::demo::secrets (
   $message1 = @("END_M1")
     This password (${insecure_password}) was encrypted with 'eyaml encrypt' and stored in Hiera,
     but our class parameter is just a plain String.
+
     At catalog compilation time, the Puppet Server decrypts it and puts the clear-text value
     directly into the catalog. That catalog can end up in PuppetDB and may be visible in the
     Puppet Enterprise console and logs.
+
     We should avoid handling secrets this way.
     | END_M1
 
@@ -44,9 +46,10 @@ class profile::demo::secrets (
   $message2 = @("END_M2")
     This password (${sensitive_password}) was also encrypted with 'eyaml encrypt' and stored in Hiera,
     but this time our class parameter type is Sensitive[String].
+
     At catalog compilation, the Puppet Server decrypts it and wraps it in a Sensitive object.
-    When we interpolate it, Puppet will not show the real value. Instead, it shows:
-      ${sensitive_password}
+    When we interpolate it, Puppet will not show the real value. Instead, it shows: ${sensitive_password}
+    
     This keeps the value out of logs and reports, but the decrypted value still exists
     inside the compiled catalog on the Server.
     | END_M2
