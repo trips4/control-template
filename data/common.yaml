@@ -18,6 +18,7 @@ puppet_enterprise::master::code_manager::git_settings:
       #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     - remote: "git@github.com:trips4/Bad-Customer.git"
     #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    - remote: "git@github.com:trips4/control-scm.git"
 puppet_enterprise::master::code_manager::sources:
   puppet:
     remote: "git@github.com:trips4/control-template.git"
@@ -34,11 +35,13 @@ puppet_enterprise::master::code_manager::sources:
   baseline:
     remote: "git@github.com:trips4/baseline.git"
     prefix: false
+  scm:
+    remote: "git@github.com:trips4/control-scm.git"
+    prefix: true
+
 # We use this hiera data file to ensure all nodes have at least the base profile applied
 #classes:
 #  - profile::base
-
-comply::scanner_source: 'https://lab2-scm01.triplo.psedemos.com:30303/assessor'
 
 patching_as_code::patch_schedule:
   primary:

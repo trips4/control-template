@@ -1,0 +1,17 @@
+{
+  "description": "Holds an Ubuntu package to prevent updates using apt-mark",
+  "input_method": "environment",
+  "parameters": {
+    "package": {
+      "description": "The package name to hold",
+      "type": "String",
+      "sensitive": false
+    }
+  },
+  "implementations": [
+    {
+      "name": "ubuntu_hold_package.sh",
+      "requirements": ["shell"]
+    }
+  ]
+}

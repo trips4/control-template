@@ -1,0 +1,17 @@
+{
+  "description": "Unblocks a Windows Update by KB number using PSWindowsUpdate module",
+  "input_method": "powershell",
+  "parameters": {
+    "kbnumber": {
+      "description": "The KB article number to unblock (with or without 'KB' prefix)",
+      "type": "String",
+      "sensitive": false
+    }
+  },
+  "implementations": [
+    {
+      "name": "win_unblock_patch.ps1",
+      "requirements": ["powershell"]
+    }
+  ]
+}
