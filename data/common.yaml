@@ -10,34 +10,34 @@ puppet_enterprise::profile::master::r10k_known_hosts:
 puppet_enterprise::master::code_manager::git_settings:
   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
   repositories:
-    - remote: "git@github.com:trips4/control-template.git"
-      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
-    - remote: "git@github.com:trips4/Great-Customer.git"
-      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
-    - remote: "git@github.com:trips4/Good-Customer.git"
-      #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
-    - remote: "git@github.com:trips4/Bad-Customer.git"
+    # - remote: "git@github.com:trips4/control-template.git"
+    #   #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    # - remote: "git@github.com:trips4/Great-Customer.git"
+    #   #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    # - remote: "git@github.com:trips4/Good-Customer.git"
+    #   #private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
+    # - remote: "git@github.com:trips4/Bad-Customer.git"
     #   private-key: "/etc/puppetlabs/puppetserver/ssh/id-control-repo.ed25519"
     - remote: "git@github.com:trips4/control-scm.git"
 puppet_enterprise::master::code_manager::sources:
-  puppet:
-    remote: "git@github.com:trips4/control-template.git"
-    prefix: false
-  great_cust:
-    remote: "git@github.com:trips4/Great-Customer.git"
-    prefix: true
-  good_cust:
-    remote: "git@github.com:trips4/Good-Customer.git"
-    prefix: true
-  bad_cust:
-    remote: "git@github.com:trips4/Bad-Customer.git"
-    prefix: true
-  baseline:
-    remote: "git@github.com:trips4/baseline.git"
-    prefix: false
+  # puppet:
+  #   remote: "git@github.com:trips4/control-template.git"
+  #   prefix: false
+  # great_cust:
+  #   remote: "git@github.com:trips4/Great-Customer.git"
+  #   prefix: true
+  # good_cust:
+  #   remote: "git@github.com:trips4/Good-Customer.git"
+  #   prefix: true
+  # bad_cust:
+  #   remote: "git@github.com:trips4/Bad-Customer.git"
+  #   prefix: true
+  # baseline:
+  #   remote: "git@github.com:trips4/baseline.git"
+  #   prefix: false
   scm:
     remote: "git@github.com:trips4/control-scm.git"
-    prefix: true
+    prefix: false
 
 # We use this hiera data file to ensure all nodes have at least the base profile applied
 #classes:
